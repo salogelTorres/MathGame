@@ -1,6 +1,5 @@
 import { OperacionesCombinadasClass } from "./OperacionesCombinadasClass.js";
 
-// Comentario de Luis
 function aplicarOperacionesCombinadas(element) {
   if (element.length === undefined) {
     generateOperacionesCombinadas(element);
@@ -12,12 +11,18 @@ function aplicarOperacionesCombinadas(element) {
 }
 
 function generateOperacionesCombinadas(element) {
-  element.innerHTML = `Aqui va un operacion combinada`;
-  var text = "2 x (34 + 8 ) -5 : 4";
-  // var text = ["2", "x", "(", "34", "+", "8", ")", "-5", ":", "4"];
+  var print = ``;
+  var text =
+    "2 x [ 2 x 4 x ( 34 + 8 x 4 ) x ( 5 + 4 ) ] : 4 + [ 23 x ( 4 + 6 ) ]";
   var operacionCombinada = new OperacionesCombinadasClass(text);
   console.log(operacionCombinada);
-
+  // operacionCombinada.forEach(step => {
+  //   print += `<br>`;
+  //   step.forEach(char => {
+  //     print += `${char} `;
+  //   });
+  // });
+  element.innerHTML = print;
 }
 
 export { aplicarOperacionesCombinadas };
