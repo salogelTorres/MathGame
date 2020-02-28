@@ -1,5 +1,5 @@
 import { OperacionesCombinadasClass } from "./OperacionesCombinadasClass.js";
-
+//Comentario de Diego
 
 function aplicarOperacionesCombinadas(element) {
   if (element.length === undefined) {
