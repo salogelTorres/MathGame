@@ -1,6 +1,6 @@
 import { OperacionesCombinadasClass } from "./OperacionesCombinadasClass.js";
 
-
+// Comentario de Luis
 function aplicarOperacionesCombinadas(element) {
   if (element.length === undefined) {
     generateOperacionesCombinadas(element);
