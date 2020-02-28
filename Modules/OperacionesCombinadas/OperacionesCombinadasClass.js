@@ -1,3 +1,4 @@
+
 class OperacionesCombinadasClass {
   constructor(combinedOperation) {
     this.combinedOperation = this.setCombinedOperation(combinedOperation);
