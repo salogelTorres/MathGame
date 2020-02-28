@@ -1,6 +1,11 @@
 import { OperacionesCombinadasClass } from "./OperacionesCombinadasClass.js";
+<<<<<<< HEAD
 
 // Comentario de Luis
+=======
+import { OperacionesCombinadasHelpers } from "./OperacionesCombinadasHelpers.js"; 
+
+>>>>>>> 4def6a717fa1b390049d2383ed62359eec0ac552
 function aplicarOperacionesCombinadas(element) {
   if (element.length === undefined) {
     generateOperacionesCombinadas(element);
@@ -13,11 +18,14 @@ function aplicarOperacionesCombinadas(element) {
 
 function generateOperacionesCombinadas(element) {
   element.innerHTML = `Aqui va un operacion combinada`;
-  var text = "2 x (34 + 8 ) -5 : 4";
+  var text = OperacionesCombinadasHelpers.crearSuma("3");
+  // var text = "2 x (34 + 8 ) -5 : 4";
+
   // var text = ["2", "x", "(", "34", "+", "8", ")", "-5", ":", "4"];
   var operacionCombinada = new OperacionesCombinadasClass(text);
   console.log(operacionCombinada);
 
 }
+
 
 export { aplicarOperacionesCombinadas };
