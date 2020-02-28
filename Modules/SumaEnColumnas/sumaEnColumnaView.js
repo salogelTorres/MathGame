@@ -1,6 +1,6 @@
 import { sumaEnColumnasClass } from "./sumaEnColumnasClass.js";
 
-function applySum(element, numberOfAddends, dimension) {
+function aplicarSumaEnColumnas(element, numberOfAddends, dimension) {
   if (element.length === undefined) {
     generateSumaEnColumnas(element, numberOfAddends, dimension);
   } else {
@@ -88,8 +88,5 @@ function generateSumaEnColumnas(element, numberOfAddends, dimension) {
   elemento.innerHTML = print;
 }
 
-function mostrarResultado() {
-  alert();
-}
 
-export { applySum, generateSumaEnColumnas, mostrarResultado };
+export { aplicarSumaEnColumnas};

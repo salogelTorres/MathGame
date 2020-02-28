@@ -1,3 +1,9 @@
+class OperacionesCombinadasClass{
+    constructor(combinedOperation){
+        this.combinedOperation = combinedOperation;
+        
+    }
+}
 var text = "2 + 5 x 8 : 2 x ( 5 + 7 )";
 var splitText = text.split(" ");
 console.log(splitText);
