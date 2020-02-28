@@ -1,4 +1,4 @@
-import { OperacionesCombinadasClass } from "./OperacionesCombinadasClass.js";
+// import { OperacionesCombinadasClass } from "./OperacionesCombinadasClass.js";
 
 
 function aplicarOperacionesCombinadas(element) {
