@@ -1,7 +1,6 @@
 import { OperacionesCombinadasClass } from "./OperacionesCombinadasClass.js";
 import { OperacionesCombinadasHelpers } from "./OperacionesCombinadasHelpers.js"; 
 
->>>>>>> 4def6a717fa1b390049d2383ed62359eec0ac552
 function aplicarOperacionesCombinadas(element) {
   if (element.length === undefined) {
     generateOperacionesCombinadas(element);
