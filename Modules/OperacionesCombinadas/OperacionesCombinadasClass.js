@@ -1,37 +1,82 @@
-class OperacionesCombinadasClass{
-    constructor(combinedOperation){
-        this.combinedOperation = combinedOperation;
-        
+class OperacionesCombinadasClass {
+  constructor(combinedOperation) {
+    this.combinedOperation = this.setCombinedOperation(combinedOperation);
+    this.valid = this.validateCombineOperation(this.combinedOperation);
+    return this;
+  }
+
+  setCombinedOperation(combinedOperation) {
+    if (typeof combinedOperation == "string") {
+      return combinedOperation.split(" ");
+    } else if (typeof combinedOperation == "object") {
+      return combinedOperation;
     }
-}
-var text = "2 + 5 x 8 : 2 x ( 5 + 7 )";
-var splitText = text.split(" ");
-console.log(splitText);
-var firstPositionParenthesis = splitText.indexOf("(");
-var secondPositionParenthesis = splitText.indexOf(")");
-console.log(firstPositionParenthesis + " " + secondPositionParenthesis);
-var firstOperation = splitText.slice(
-  firstPositionParenthesis + 1,
-  secondPositionParenthesis
-);
-console.log(doOperation(firstOperation[0], firstOperation[1], firstOperation[2]));
+  }
 
+  validateCombineOperation(combinedOperation) {
+    var ret = false;
+    combinedOperation.forEach(element => {
+      // console.log(element +" es un " + Number.isInteger(parseInt(element)))
+      if (!Number.isInteger(parseInt(element))) {
+        switch (element) {
+          case "(":
+            ret = true;
+            break;
+          case ")":
+            ret = true;
+            break;
+          case "[":
+            ret = true;
+            break;
+          case "]":
+            ret = true;
+            break;
+          case "+":
+            ret = true;
+            break;
+          case "-":
+            ret = true;
+            break;
+          case "x":
+            console.log(element + " true" )
 
-function doOperation(number1, operation, number2) {
+            break;
+            console.log(element + " true" )
+
+          case ":":
+            console.log(element + " true" )
+
+            break;
+          default:
+            console.log(element + " es falso");
+            return false;
+        }
+      }else {
+        ret = true;
+      }
+    });
+    return ret;
+  }
+
+  doCombinedOperation(combinedOperation) {}
+  doOperation(number1, operation, number2) {
     number1 = parseInt(number1);
     number2 = parseInt(number2);
-  switch (operation) {
-    case "+":
-      return number1 + number2;
-      break;
-    case "-":
-      return number1 - number2;
-      break;
-    case "x":
-      return number1 * number2;
-      break;
-    case ":":
-      return number1 / number2;
-      break;
+    switch (operation) {
+      case "+":
+        return number1 + number2;
+        break;
+      case "-":
+        return number1 - number2;
+        break;
+      case "x":
+        return number1 * number2;
+        break;
+      case ":":
+        return number1 / number2;
+        break;
+    }
   }
 }
+
+export { OperacionesCombinadasClass };
