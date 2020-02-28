@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="sumaEnColumna1"></div>
+    <div class="sumaEnColumna2"></div>
+    
+
+    <script type="module">
+      import {
+        applySum,
+        mostrarResultado,
+        generateSumaEnColumnas
+      } from "./script.js";
+
+      // Asignamos el ejercicio a los elementos
+      var element = document.querySelectorAll(".sumaEnColumna1");
+      applySum(element, 3, 3); // El primer argumento es el elemento al que se le aplicará el ejercicio, el segundo argumento dice el numero de sumandos que se quieren generar, y el tercer argumento indica el orden de magnitud de los numeros generados
+
+      var element = document.querySelectorAll(".sumaEnColumna2");
+      applySum(element, 2,9); // El primer argumento es el elemento al que se le aplicará el ejercicio, el segundo argumento dice el numero de sumandos que se quieren generar, y el tercer argumento indica el orden de magnitud de los numeros generados
+    </script>
+  </body>
+</html>
