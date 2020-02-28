@@ -1,8 +1,4 @@
 import { OperacionesCombinadasClass } from "./OperacionesCombinadasClass.js";
-<<<<<<< HEAD
-
-// Comentario de Luis
-=======
 import { OperacionesCombinadasHelpers } from "./OperacionesCombinadasHelpers.js"; 
 
 >>>>>>> 4def6a717fa1b390049d2383ed62359eec0ac552
