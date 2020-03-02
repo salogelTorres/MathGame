@@ -14,7 +14,7 @@ class OperacionesCombinadasClass {
     this.result = OperacionesCombinadasClass.doCombinedOperation(
       this.combinedOperation
     );
-    for (var i = 0; i < 11; i++) {
+    for (var i = 0; i < 4; i++) {
       this.firstOperationPosition = 0;
 
       var operation = this.combinedOperation;
