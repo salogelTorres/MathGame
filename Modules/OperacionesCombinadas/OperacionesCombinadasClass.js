@@ -65,12 +65,12 @@ class OperacionesCombinadasClass {
       this.firstOperationPosition += init;
       return combinedOperation.slice(init, end);
     } else if (
-      combinedOperation.indexOf("x") != -1 ||
+      combinedOperation.indexOf("x") != -1 &&
       combinedOperation.indexOf(":") != -1
     ) {
       // console.log(combinedOperation.indexOf("x") + " "+ combinedOperation.indexOf(":"));
 
-      if (combinedOperation.indexOf("x") > combinedOperation.indexOf(":")) {
+      if (combinedOperation.indexOf("x") < combinedOperation.indexOf(":")) {
         var init = combinedOperation.indexOf("x") - 1;
         var end = combinedOperation.indexOf("x") + 2;
         this.firstOperationPosition += init;
