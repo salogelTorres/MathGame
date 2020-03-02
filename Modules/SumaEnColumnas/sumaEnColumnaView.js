@@ -31,7 +31,7 @@ function generateSumaEnColumnas(element, numberOfAddends, dimension) {
     index++;
   });
   print += `</p>`;
-  var button = `<button class="btn showResult">Mostrar resultado</button>`;
+  var button = `<button class="btn showResult btnSuma">Resolver</button>`;
   //   Creamos el boton para mostrar el resultado
   print += button;
 
@@ -52,7 +52,13 @@ function generateSumaEnColumnas(element, numberOfAddends, dimension) {
   print += `<tr class="lleva">`;
   print += `<td>Lleva:</td>`;
   sumaEnColumna.lleva.forEach(digit => {
-    print += `<td>${digit}</td>`;
+    
+    if (digit==0) {
+    print += `<td></td>`;      
+    }else {
+      print += `<td>+${digit}</td>`;
+    }
+    
   });
   print += `</tr>`;
 
@@ -74,7 +80,7 @@ function generateSumaEnColumnas(element, numberOfAddends, dimension) {
 
   //   MOSTRAMOS EL TOTAL
   print += `<tr class="result">`;
-  print += `<td>Resultado:</td>`;
+  print += `<td></td>`;
   sumaEnColumna.suma.forEach(digit => {
     print += `<td>${digit}</td>`;
   });
@@ -82,6 +88,14 @@ function generateSumaEnColumnas(element, numberOfAddends, dimension) {
 
   //   Fin de la tabla
   print += `</table>`;
+
+  //   MOSTRAMOS EL TOTAL
+  print += `<div><p>Resultado:`;
+  sumaEnColumna.suma.forEach(digit => {
+    print += `${digit}`;
+  });
+  
+  print += `</p></div>`;
   print += `</div>
   </div>`;
 
