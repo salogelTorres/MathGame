@@ -1,5 +1,6 @@
 // Importamos librerias necesarias
 import { aplicarSumaEnColumnas } from "./Modules/SumaEnColumnas/sumaEnColumnaView.js";
+// import { aplicarOperacionesCombinadas } from "./Modules/OperacionesCombinadas/OperacionesCombinadasView.js";
 
 function asignarSumaEnColumnas() {
   // Asignamos el ejercicio a los elementos
@@ -11,10 +12,10 @@ function asignarSumaEnColumnas() {
 }
 asignarSumaEnColumnas();
 
-function asignarOperacionesCombinadas(){
-var element = document.querySelectorAll(".operacionesCombinadas");
-apply
-}
-asignarOperacionesCombinadas();
+// function asignarOperacionesCombinadas() {
+//   var element = document.querySelectorAll(".operacionesCombinadas");
+//   aplicarOperacionesCombinadas(element);
+// }
+// asignarOperacionesCombinadas();
 
-export { aplicarSumaEnColumnas };
+export { aplicarSumaEnColumnas};
