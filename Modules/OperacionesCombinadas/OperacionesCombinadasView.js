@@ -21,6 +21,8 @@ function generateOperacionesCombinadas(element) {
   //   print += `<br>`;
   //   step.forEach(char => {
   //     print += `${char} `;
+
+  
   //   });
   // });
   element.innerHTML = print;
