@@ -31,12 +31,12 @@ class OperacionesCombinadasHelpers {
           contador++;
         }
       }
-      console.log("contador " + contador);
+      // console.log("contador " + contador);
       indice = this.numeroDeOperaciones - contador;
-      console.log("indice " + indice);
+      // console.log("indice " + indice);
     }
 
-    console.log(operacion);
+    // console.log(operacion);
     return operacion;
   }
 
@@ -57,7 +57,6 @@ class OperacionesCombinadasHelpers {
     var operacion = array;
     operacion.push("+");
     operacion.push(Math.round(Math.random() * 10 ** dimension));
-
     return operacion;
   }
 
@@ -78,6 +77,7 @@ class OperacionesCombinadasHelpers {
       );
     }
     operacion.push(")");
+
 
     return operacion;
   }
@@ -123,7 +123,7 @@ class OperacionesCombinadasHelpers {
       }
     }
     operacion.push(")");
-    console.log(operacion);
+    // console.log(operacion);
     return operacion;
   }
 
@@ -225,6 +225,8 @@ class OperacionesCombinadasHelpers {
   }
 
   static incluirDivision(array, dimension, position) {
+
+
     var operacion = array;
     var posicion = position;
 
@@ -238,12 +240,14 @@ class OperacionesCombinadasHelpers {
       numero1 = Math.round(Math.random() * 10 ** dimension);
     }
     var numero2 = resultado * numero1;
+   
 
     operacion.splice(posicion, 1, numero2);
     operacion.splice(posicion + 1, 0, ":");
     operacion.splice(posicion + 2, 0, numero1);
 
-    // console.log(operacion);
+    
+    
     return operacion;
   }
 
@@ -272,7 +276,7 @@ class OperacionesCombinadasHelpers {
         nivel - 1
       );
     }
-    console.log(eval(operacionTemporal.join("")));
+    // console.log(eval(operacionTemporal.join("")));
     resultadoTemporal = eval(operacionTemporal.join(""));
     if (resultadoTemporal != resultado) {
       var numero1 = resultado - resultadoTemporal;
@@ -319,6 +323,7 @@ class OperacionesCombinadasHelpers {
     if (dimension <= 0) {
       dimension = 1;
     }
+   
 
     var nivel = 0;
     var nivelesPreparados = 4;
@@ -337,7 +342,7 @@ class OperacionesCombinadasHelpers {
     if (limiteDeOperaciones <= 1) {
       nivel = 2; // Para evitar que entre en () o [] si solo puede poner una operación
     }
-    console.log("limite " + limiteDeOperaciones);
+    // console.log("limite " + limiteDeOperaciones);
 
     // Decisión de qué operaciones se pueden ejecutar por nivel.
     // level = 0 --> + y -
@@ -377,7 +382,9 @@ class OperacionesCombinadasHelpers {
         Math.random() * (numeroDeOperacionesPosibles - 1) + 1
       );
     }
-    console.log("elección " + eleccion);
+    // console.log("elección " + eleccion);
+
+    
 
     // Aplicar la eleccion
     switch (eleccion) {
@@ -418,7 +425,7 @@ class OperacionesCombinadasHelpers {
           ) {
             posicion = Math.round(Math.random() * operacion.length);
             index++;
-            console.log("probando");
+            // console.log("probando");
           }
           if (index >= 10) {
             OperacionesCombinadasHelpers.añadirProducto(
@@ -503,6 +510,7 @@ class OperacionesCombinadasHelpers {
         console.log("Error de generación aleatoria");
         break;
     }
+    // console.log(operacion)
     return operacion;
   }
 }
