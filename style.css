@@ -1,11 +1,20 @@
 body{
     background-image:url("https://image.freepik.com/vector-gratis/fondo-abstracto-azul_1048-1511.jpg");
     font-family: Arial, Helvetica, sans-serif;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 h1{
 color: rgb(224, 245, 245);
+background-color: rgb(11, 93, 139);
+box-sizing: border-box;
+width: 100%;
+border: solid rgb(6, 18, 85) 10px;
+padding: 5px;
 font-size:3.5em;
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+text-decoration: overline;
+font-family: Georgia, 'Times New Roman', Times, sans-serif;
 }
 .sumaColumna{
     max-width: 1000px;
@@ -19,6 +28,7 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     /* text-transform: uppercase; */
     font-size: 1.8em;
     font-weight: bold;
+    font-style: oblique;
     background-color: rgba(244, 250, 252, 0.63);
     padding: 20px;
     border-radius: 3px;
@@ -31,6 +41,7 @@ font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     align-items: center;
     font-weight: bold;
     justify-content: center;
+    overflow-x: scroll;
 }
 
 .sumaColumna table, tr, td{
@@ -70,7 +81,7 @@ border-top: 1px solid black;
     display: none !important;
 }
 .lleva{
-    color: rgb(182, 178, 178);
+    color: rgb(134, 130, 130);
     font-size: 0.7em;
     font-weight: lighter;
     text-align: center;
