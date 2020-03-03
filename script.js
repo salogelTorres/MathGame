@@ -1,6 +1,6 @@
 // Importamos librerias necesarias
 import { aplicarSumaEnColumnas } from "./Modules/SumaEnColumnas/sumaEnColumnaView.js";
-// import { aplicarOperacionesCombinadas } from "./Modules/OperacionesCombinadas/OperacionesCombinadasView.js";
+import { aplicarOperacionesCombinadas } from "./Modules/OperacionesCombinadas/OperacionesCombinadasView.js";
 
 function asignarSumaEnColumnas() {
   // Asignamos el ejercicio a los elementos
@@ -8,14 +8,14 @@ function asignarSumaEnColumnas() {
   aplicarSumaEnColumnas(element, 3, 3); // El primer argumento es el elemento al que se le aplicará el ejercicio, el segundo argumento dice el numero de sumandos que se quieren generar, y el tercer argumento indica el orden de magnitud de los numeros generados
 
   var element = document.querySelectorAll(".sumaEnColumna2");
-  aplicarSumaEnColumnas(element, 5, 4); // El primer argumento es el elemento al que se le aplicará el ejercicio, el segundo argumento dice el numero de sumandos que se quieren generar, y el tercer argumento indica el orden de magnitud de los numeros generados
+  aplicarSumaEnColumnas(element, 10, 9); // El primer argumento es el elemento al que se le aplicará el ejercicio, el segundo argumento dice el numero de sumandos que se quieren generar, y el tercer argumento indica el orden de magnitud de los numeros generados
 }
 asignarSumaEnColumnas();
 
-// function asignarOperacionesCombinadas() {
-//   var element = document.querySelectorAll(".operacionesCombinadas");
-//   aplicarOperacionesCombinadas(element);
-// }
-// asignarOperacionesCombinadas();
+function asignarOperacionesCombinadas() {
+  var element = document.querySelectorAll(".operacionesCombinadas");
+  aplicarOperacionesCombinadas(element);
+}
+asignarOperacionesCombinadas();
 
-export { aplicarSumaEnColumnas};
+export { aplicarSumaEnColumnas, aplicarOperacionesCombinadas };
