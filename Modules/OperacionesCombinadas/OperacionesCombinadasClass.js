@@ -2,33 +2,51 @@ class OperacionesCombinadasClass {
   constructor(combinedOperation) {
     this.combinedOperation = this.setCombinedOperation(combinedOperation);
     this.firstOperationPosition = 0;
-    this.result = "";
-    this.output = [];
-
+    this.directResult = "";
+    this.steps = [this.combinedOperation.slice()];
+    this.output = "";
     this.exec();
 
-    return this;
+
+    if (this.output == this.directResult) {
+      return this.result();
+    } else {
+      throw "Error en coincidencia de resultado"
+    }
+  }
+  result() {
+    return this.steps;
   }
 
   exec() {
-    this.result = OperacionesCombinadasClass.doCombinedOperation(
+    this.directResult = OperacionesCombinadasClass.doCombinedOperation(
       this.combinedOperation
     );
-    for (var i = 0; i < 4; i++) {
+    var index2 = 0;
+    while (!this.isBasicOperation(this.combinedOperation) && index2 < 20) {
+      index2++;
       this.firstOperationPosition = 0;
-
       var operation = this.combinedOperation;
-      while (!this.isBasicOperation(operation)) {
+      var index = 0;
+      while (!this.isBasicOperation(operation) && index < 100) {
         operation = this.findFirstOperation(operation);
+        index++;
       }
       var resultOperation = this.doOperation(operation);
+      this.updateCombinedOperation(operation, resultOperation);
       this.generateOutput(resultOperation);
     }
+    this.firstOperationPosition = 0;
+    var resultOperation = this.doOperation(this.combinedOperation);
+    this.updateCombinedOperation(this.combinedOperation, resultOperation);
+    this.generateOutput(resultOperation);
   }
-  generateOutput(resultOperation) {
+
+  updateCombinedOperation(operation, resultOperation) {
+    // console.log(this.firstOperationPosition);
     this.combinedOperation.splice(
       this.firstOperationPosition,
-      3,
+      operation.length,
       resultOperation
     );
     var beforeElement = this.combinedOperation[this.firstOperationPosition - 1];
@@ -41,15 +59,20 @@ class OperacionesCombinadasClass {
       this.combinedOperation.splice(this.firstOperationPosition + 1, 1);
       this.combinedOperation.splice(this.firstOperationPosition - 1, 1);
     }
-    console.log(this.combinedOperation);
-
-    this.output.push(this.combinedOperation);
+    var toStep = this.combinedOperation.slice();
+    this.steps.push(toStep);
   }
-
-  doFirstOperation(combinedOperation) {
-    var operation = combinedOperation;
-    while (!this.isBasicOperation(operation)) {
-      operation = this.findFirstOperation(operation);
+  generateOutput(resultOperation) {
+    this.output = resultOperation;
+  }
+  // Quita los paréntesis y los corchetes al principio y al final
+  quitInitEnd(array) {
+    if (!Array.isArray(array)) {
+      return false;
+    } else {
+      array = array.shift();
+      array = array.pop();
+      return array;
     }
   }
 
@@ -68,8 +91,6 @@ class OperacionesCombinadasClass {
       combinedOperation.indexOf("x") != -1 &&
       combinedOperation.indexOf(":") != -1
     ) {
-      // console.log(combinedOperation.indexOf("x") + " "+ combinedOperation.indexOf(":"));
-
       if (combinedOperation.indexOf("x") < combinedOperation.indexOf(":")) {
         var init = combinedOperation.indexOf("x") - 1;
         var end = combinedOperation.indexOf("x") + 2;
@@ -78,6 +99,36 @@ class OperacionesCombinadasClass {
       } else {
         var init = combinedOperation.indexOf(":") - 1;
         var end = combinedOperation.indexOf(":") + 2;
+        this.firstOperationPosition += init;
+        return combinedOperation.slice(init, end);
+      }
+    } else if (
+      combinedOperation.indexOf("x") != -1 ||
+      combinedOperation.indexOf(":") != -1
+    ) {
+      if (combinedOperation.indexOf("x") > combinedOperation.indexOf(":")) {
+        var init = combinedOperation.indexOf("x") - 1;
+        var end = combinedOperation.indexOf("x") + 2;
+        this.firstOperationPosition += init;
+        return combinedOperation.slice(init, end);
+      } else {
+        var init = combinedOperation.indexOf(":") - 1;
+        var end = combinedOperation.indexOf(":") + 2;
+        this.firstOperationPosition += init;
+        return combinedOperation.slice(init, end);
+      }
+    } else if (
+      combinedOperation.indexOf("+") != -1 &&
+      combinedOperation.indexOf("-") != -1
+    ) {
+      if (combinedOperation.indexOf("+") < combinedOperation.indexOf("-")) {
+        var init = combinedOperation.indexOf("+") - 1;
+        var end = combinedOperation.indexOf("+") + 2;
+        this.firstOperationPosition += init;
+        return combinedOperation.slice(init, end);
+      } else {
+        var init = combinedOperation.indexOf("-") - 1;
+        var end = combinedOperation.indexOf("-") + 2;
         this.firstOperationPosition += init;
         return combinedOperation.slice(init, end);
       }
@@ -96,14 +147,35 @@ class OperacionesCombinadasClass {
     }
   }
 
+  isResult(combinedOperation) {
+    if (combinedOperation.length != 1) {
+      return false;
+    } else if (isNaN(combinedOperation[0])) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
   isBasicOperation(combinedOperation) {
     if (combinedOperation.length != 3) {
-      return false;
-    }
-    if (OperacionesCombinadasClass.doCombinedOperation(combinedOperation)) {
-      return true;
+      if (
+        combinedOperation.length == 5 &&
+        (combinedOperation[0] == "(" || combinedOperation[0] == "[")
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
-      return false;
+      if (
+        Number.isInteger(combinedOperation[0]) &&
+        Number.isInteger(combinedOperation[2])
+      ) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }
   isOperator(string) {
@@ -122,13 +194,19 @@ class OperacionesCombinadasClass {
 
   setCombinedOperation(combinedOperation) {
     if (typeof combinedOperation == "string") {
-      return combinedOperation.split(" ");
+      var ret = combinedOperation.split(" ");
     } else if (typeof combinedOperation == "object") {
-      return combinedOperation;
+      var ret = combinedOperation;
+    }
+
+    if (this.validateCombinedOperation(ret)) {
+      return ret;
+    } else {
+      throw "Operación combinada no válida";
     }
   }
   validateCombinedOperation(combinedOperation) {
-    if (!OperacionesCombinadasClass.doCombinedOperation(combinedOperation)) {
+    if (OperacionesCombinadasClass.doCombinedOperation(combinedOperation) === false) {
       return false;
     }
 
@@ -150,22 +228,42 @@ class OperacionesCombinadasClass {
     }
   }
   doOperation(array) {
-    var number1 = parseInt(array[0]);
-    var operation = array[1];
-    var number2 = parseInt(array[2]);
-    switch (operation) {
-      case "+":
-        return number1 + number2;
-        break;
-      case "-":
-        return number1 - number2;
-        break;
-      case "x":
-        return number1 * number2;
-        break;
-      case ":":
-        return number1 / number2;
-        break;
+    if (array[0] == "[" || array[0] == "(") {
+      var number1 = parseInt(array[1]);
+      var operation = array[2];
+      var number2 = parseInt(array[3]);
+      switch (operation) {
+        case "+":
+          return number1 + number2;
+          break;
+        case "-":
+          return number1 - number2;
+          break;
+        case "x":
+          return number1 * number2;
+          break;
+        case ":":
+          return number1 / number2;
+          break;
+      }
+    } else {
+      var number1 = parseInt(array[0]);
+      var operation = array[1];
+      var number2 = parseInt(array[2]);
+      switch (operation) {
+        case "+":
+          return number1 + number2;
+          break;
+        case "-":
+          return number1 - number2;
+          break;
+        case "x":
+          return number1 * number2;
+          break;
+        case ":":
+          return number1 / number2;
+          break;
+      }
     }
   }
 }
