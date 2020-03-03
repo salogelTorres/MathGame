@@ -14,7 +14,7 @@ function aplicarOperacionesCombinadas(element) {
 function generateOperacionesCombinadas(element) {
   element.innerHTML = `Aqui va un operacion combinada`;
   var text = new OperacionesCombinadasHelpers(3, 3, 3);
-  
+  console.log(text);
 }
 
 
