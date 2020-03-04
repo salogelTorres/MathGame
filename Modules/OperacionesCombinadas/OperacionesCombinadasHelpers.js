@@ -1,6 +1,12 @@
 class OperacionesCombinadasHelpers {
   constructor(num, dimen, level) {
-    this.numeroDeOperaciones = num;
+    if (num<0){                         //Limitando el número de operaciones a [0,50]
+      this.numeroDeOperaciones = 1;
+    } else if (num > 50){
+      this.numeroDeOperaciones = 50;
+    } else {
+      this.numeroDeOperaciones = num;
+    }
     this.nivel = level;
     this.dimension = dimen;
 
@@ -10,18 +16,24 @@ class OperacionesCombinadasHelpers {
   crearCombinedOperation() {
     var operacion = [];
 
-    var indice = this.numeroDeOperaciones;
+    var numeroDeOperacionesBuscadas = this.numeroDeOperaciones;
+    var numeroDeOperacionesRestantes = this.numeroDeOperaciones;
+    
+    var dimension = this.dimension;
+    var nivel = this.nivel;
+
     var contador = 0;
-    while (indice > 0) {
+    var control = 0;
+    while (numeroDeOperacionesRestantes > 0 && control <= 50) {                //limitando a 50 operaciones consecutivas
       OperacionesCombinadasHelpers.operacionAleatoria(
         operacion,
-        this.dimension,
-        this.nivel,
-        indice
+        dimension,
+        nivel,
+        numeroDeOperacionesRestantes
       );
 
       contador = 0;
-      for (var i = 0; i <= operacion.length; i++) {
+      for (var i = 0; i <= operacion.length; i++) { //Contando cuántas operaciones hay en el array
         if (
           operacion[i] === "+" ||
           operacion[i] === "-" ||
@@ -31,8 +43,9 @@ class OperacionesCombinadasHelpers {
           contador++;
         }
       }
+      control++;
       // console.log("contador " + contador);
-      indice = this.numeroDeOperaciones - contador;
+      numeroDeOperacionesRestantes = numeroDeOperacionesBuscadas - contador;
       // console.log("indice " + indice);
     }
 
@@ -208,8 +221,13 @@ class OperacionesCombinadasHelpers {
   static crearDivision(array, dimension) {
     var operacion = array;
     var divisor = Math.round(Math.random() * 10 ** dimension);
-    while (divisor == 0) {
+    var control = 0;
+    while (divisor == 0 && control < 50) {
       divisor = Math.round(Math.random() * 10 ** dimension);
+      control++;
+    }
+    if (divisor == 0){
+      divisor = 1;
     }
     var dividendo = divisor * Math.round(Math.random() * 10 ** (dimension - 1));
     if (dividendo == 0) {
@@ -231,23 +249,30 @@ class OperacionesCombinadasHelpers {
     var posicion = position;
 
     var resultado = Math.round(Math.random() * 10 ** (dimension - 1));
-    while (resultado == 0) {
+    var control = 0;
+    while (resultado == 0 && control < 50) {
       resultado = Math.round(Math.random() * 10 ** dimension);
+      control++;
     }
 
     var numero1 = Math.round(Math.random() * 10 ** (dimension - 1));
-    while (numero1 == 0) {
+    var control = 0;
+    while (numero1 == 0 && control < 50) {
       numero1 = Math.round(Math.random() * 10 ** dimension);
+      control++;
+    }
+    if (numero1 == 0){
+      numero1 = 1;
     }
     var numero2 = resultado * numero1;
-   
+
 
     operacion.splice(posicion, 1, numero2);
     operacion.splice(posicion + 1, 0, ":");
     operacion.splice(posicion + 2, 0, numero1);
 
-    
-    
+
+
     return operacion;
   }
 
@@ -317,16 +342,23 @@ class OperacionesCombinadasHelpers {
 
   // Aleatorias
 
-  static operacionAleatoria(array, dimension, level, opRemaining) {
+  static operacionAleatoria(array, dimen, level, opRemaining) {
     // Recogida de datos
-    var operacion = array;
-    if (dimension <= 0) {
-      dimension = 1;
+    var operacion = array;          // Recojo el vector de la operación
+    
+    if (dimen <= 0) {               // Controlo que la dimensión esté en [0,4]
+      var dimension = 1;
+    } else if (dimen >= 3){
+      var dimension = 3
+    } else {
+      var dimension = dimen;
     }
-   
 
+                                    // Controlo que nivel esté dentro del límite de niveles
+                                    // para que se asignen las operaciones preparadas en el switch
+                                    // Ahora mismo, 3 niveles preparados
     var nivel = 0;
-    var nivelesPreparados = 4;
+    var nivelesPreparados = 3;
 
     if (level > nivelesPreparados) {
       nivel = nivelesPreparados;
@@ -339,8 +371,8 @@ class OperacionesCombinadasHelpers {
     }
 
     var limiteDeOperaciones = opRemaining; //Solo necesario en caso de añadir () o []
-    if (limiteDeOperaciones <= 1) {
-      nivel = 2; // Para evitar que entre en () o [] si solo puede poner una operación
+    if (limiteDeOperaciones <= 2) {
+      nivel = 2; // Para evitar que entre en () o [] si solo puede poner una o dos operaciones
     }
     // console.log("limite " + limiteDeOperaciones);
 
@@ -350,6 +382,7 @@ class OperacionesCombinadasHelpers {
     // level = 2 --> + , - , x y :
     // level = 3 --> + , - , x , : y ()
     // level = 4 --> + , - , x , : , () y []
+    // SI SE AÑADEN NIVELES Y/O OPERACIONES 
     switch (nivel) {
       case 0:
         var numeroDeOperacionesPosibles = 2;
@@ -377,14 +410,19 @@ class OperacionesCombinadasHelpers {
     );
 
     // Evitar que la primera y segunda elección sean 4 consecutivos. Para salvar error de bucle infinito.
-    while (operacion.length == 3 && operacion.includes(":") && eleccion == 4) {
+    var control = 0;
+    while (operacion.length == 3 && operacion.includes(":") && eleccion == 4 && control < 50) {
       eleccion = Math.round(
         Math.random() * (numeroDeOperacionesPosibles - 1) + 1
-      );
+      );    
+      control++;
+    }
+    if(operacion.length == 3 && operacion.includes(":") && eleccion == 4){
+      eleccion = 1;
     }
     // console.log("elección " + eleccion);
 
-    
+
 
     // Aplicar la eleccion
     switch (eleccion) {
@@ -416,12 +454,12 @@ class OperacionesCombinadasHelpers {
           OperacionesCombinadasHelpers.crearDivision(operacion, dimension);
         } else {
           var posicion = Math.round(Math.random() * operacion.length);
-          var index = 0;
+          var control = 0;
           while (
             (isNaN(operacion[posicion]) == true ||
               operacion[posicion - 1] == ":" ||
               operacion[posicion + 1] == ":") &&
-            index <= 10
+              control <= 10
           ) {
             posicion = Math.round(Math.random() * operacion.length);
             index++;

@@ -14,7 +14,7 @@ function aplicarOperacionesCombinadas(element) {
 function generateOperacionesCombinadas(element) {
   var result = false;
   while (!result) {
-    var text = new OperacionesCombinadasHelpers(3, 3, 3);
+    var text = new OperacionesCombinadasHelpers(5, 2, 3);
     result = new OperacionesCombinadasClass(text.slice());
     console.log(result);
   }
