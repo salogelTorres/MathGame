@@ -94,7 +94,7 @@ class OperacionesCombinadasHelpers {
     operacion.push("+");
     operacion.push(numero2);
 
-    console.log(operacion);
+    // console.log(operacion);
     return operacion;
   }
 

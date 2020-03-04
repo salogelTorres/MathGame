@@ -1,6 +1,7 @@
 // Importamos librerias necesarias
 import { aplicarSumaEnColumnas } from "./Modules/SumaEnColumnas/sumaEnColumnaView.js";
 import { aplicarOperacionesCombinadas } from "./Modules/OperacionesCombinadas/OperacionesCombinadasView.js";
+import { aplicarOperacionesSegundoGrado } from "./Modules/OperacionesSegundoGrado/OperacionesSegundoGradoView.js";
 
 function asignarSumaEnColumnas() {
   // Asignamos el ejercicio a los elementos
@@ -17,5 +18,13 @@ function asignarOperacionesCombinadas() {
   aplicarOperacionesCombinadas(element);
 }
 asignarOperacionesCombinadas();
+
+function asignarOperacionesSegundoGrado() {
+  var element = document.querySelectorAll(".operacionesSegundoGrado");
+  aplicarOperacionesSegundoGrado(element);
+}
+asignarOperacionesSegundoGrado();
+
+
 
 export { aplicarSumaEnColumnas, aplicarOperacionesCombinadas };
