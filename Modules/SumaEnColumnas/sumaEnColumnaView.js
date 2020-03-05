@@ -90,7 +90,7 @@ function generateSumaEnColumnas(element, numberOfAddends, dimension) {
   print += `</table>`;
 
   //   MOSTRAMOS EL TOTAL
-  print += `<div><p>Resultado:`;
+  print += `<div><p>Resultado: `;
   sumaEnColumna.suma.forEach(digit => {
     print += `${digit}`;
   });
