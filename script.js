@@ -3,6 +3,10 @@ import { aplicarSumaEnColumnas } from "./Modules/SumaEnColumnas/sumaEnColumnaVie
 import { aplicarOperacionesCombinadas } from "./Modules/OperacionesCombinadas/OperacionesCombinadasView.js";
 import { aplicarOperacionesSegundoGrado } from "./Modules/OperacionesSegundoGrado/OperacionesSegundoGradoView.js";
 
+
+
+var el = document.querySelectorAll(".asscii")
+
 function asignarSumaEnColumnas() {
   // Asignamos el ejercicio a los elementos
   var element = document.querySelectorAll(".sumaEnColumna1");

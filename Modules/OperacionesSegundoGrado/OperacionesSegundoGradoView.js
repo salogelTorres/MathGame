@@ -10,7 +10,11 @@ function aplicarOperacionesSegundoGrado(element) {
   }
 }
 function generateOperacionesSegundoGrado(element){
-  var result = new OperacionesSegundoGradoClass(5,7,3,2);
-  console.log(result);
+  var result = new OperacionesSegundoGradoClass(6,7,3,2);
+  var print = ``;
+  print+="`" +result.output.discriminant + "`<br>";
+  print+="`" +result.output.ecuation + "`";
+  element.innerHTML = print;
+
 }
 export { aplicarOperacionesSegundoGrado };
