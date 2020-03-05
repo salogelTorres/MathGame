@@ -41,7 +41,7 @@ function generateOperacionesCombinadas(element) {
   });
 
   var indexSteps = 0;
-  print += `<div class="resultado">`;
+  print += `<div class="resultado hide">`;
   result.forEach(steps => {
     indexSteps++;
     print += `<p>Paso ${indexSteps}) ${steps.join(" ")}</p>`;
