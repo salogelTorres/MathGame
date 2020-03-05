@@ -14,7 +14,7 @@ function aplicarOperacionesCombinadas(element) {
 function generateOperacionesCombinadas(element) {
   var result = false;
   while (!result) {
-    var text = new OperacionesCombinadasHelpers(3, 3, 3);
+    var text = new OperacionesCombinadasHelpers(5, 2, 3);
     result = new OperacionesCombinadasClass(text.slice());
     console.log(result);
   }
@@ -28,9 +28,20 @@ function generateOperacionesCombinadas(element) {
     print += `${element}`;
   });
   print += `</div>`;
+  var button = `<button class="btn showResult btnSuma">Resolver</button>`;
+  //   Creamos el boton para mostrar el resultado
+  print += button;
+
+  //   Lanzamos el evento al boton
+  element.addEventListener("click", function(e) {
+    if (e.srcElement.classList[1] == "showResult") {
+      e.target.nextElementSibling.classList.remove("hide");
+      e.target.classList.add("hide");
+    }
+  });
 
   var indexSteps = 0;
-  print += `<div class="resultado">`;
+  print += `<div class="resultado hide">`;
   result.forEach(steps => {
     indexSteps++;
     print += `<p>Paso ${indexSteps}) ${steps.join(" ")}</p>`;

@@ -58,6 +58,41 @@ h1 span{
 .sumaColumna table .result{
 border-top: 1px solid black;
 }
+.operacionesCombinadas{
+    max-width: 1000px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+    padding: 10px;
+    margin: 20px auto;
+    border-radius: 3px;
+    background-color: rgba(207, 250, 252, 0.616);
+}
+.operacionesCombinadas{
+    /* text-transform: uppercase; */
+    font-size: 1.8em;
+    font-weight: bold;
+    font-style: oblique;
+    background-color: rgba(244, 250, 252, 0.63);
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px rgba(0,0,0,.5);
+}
+.operacionesCombinadas.resultado{
+    font-size: 1.8em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: scroll;
+}
+
+.operacionesCombinadas table, tr, td{
+    border-collapse: collapse;
+    border: none;
+    padding:0em 0.5em;
+}
+.operacionesCombinadas table .result{
+border-top: 1px solid black;
+}
 .btnSuma {
 	box-shadow: 0px 10px 14px -7px #276873;
 	background:linear-gradient(to bottom, #0e2949 5%, #5d7fac 100%);
