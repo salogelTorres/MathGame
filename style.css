@@ -1,3 +1,4 @@
+*{word-wrap: break-word }
 body{
     background-image:url("https://image.freepik.com/vector-gratis/fondo-abstracto-azul_1048-1511.jpg");
     font-family: Arial, Helvetica, sans-serif;
@@ -6,15 +7,21 @@ body{
     background-repeat: no-repeat;
 }
 h1{
-color: rgb(224, 245, 245);
-background-color: rgb(11, 93, 139);
+color:white;
+/*background-color: rgb(11, 93, 139);
 box-sizing: border-box;
 width: 100%;
 border: solid rgb(6, 18, 85) 10px;
-padding: 5px;
+padding: 5px;*/
 font-size:3.5em;
-text-decoration: overline;
+/* text-decoration: overline; */
 font-family: Georgia, 'Times New Roman', Times, sans-serif;
+}
+h1 span{
+    border-top: solid white 5px;
+    border-bottom: solid white 5px;
+    background-color: rgba(7, 10, 15, 0.3);
+
 }
 .sumaColumna{
     max-width: 1000px;
@@ -39,7 +46,6 @@ font-family: Georgia, 'Times New Roman', Times, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-weight: bold;
     justify-content: center;
     overflow-x: scroll;
 }
@@ -52,10 +58,45 @@ font-family: Georgia, 'Times New Roman', Times, sans-serif;
 .sumaColumna table .result{
 border-top: 1px solid black;
 }
+.operacionesCombinadas{
+    max-width: 1000px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,.5);
+    padding: 10px;
+    margin: 20px auto;
+    border-radius: 3px;
+    background-color: rgba(207, 250, 252, 0.616);
+}
+.operacionesCombinadas{
+    /* text-transform: uppercase; */
+    font-size: 1.8em;
+    font-weight: bold;
+    font-style: oblique;
+    background-color: rgba(244, 250, 252, 0.63);
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px rgba(0,0,0,.5);
+}
+.operacionesCombinadas.resultado{
+    font-size: 1.8em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: scroll;
+}
+
+.operacionesCombinadas table, tr, td{
+    border-collapse: collapse;
+    border: none;
+    padding:0em 0.5em;
+}
+.operacionesCombinadas table .result{
+border-top: 1px solid black;
+}
 .btnSuma {
 	box-shadow: 0px 10px 14px -7px #276873;
-	background:linear-gradient(to bottom, #599bb3 5%, #56e2f7 100%);
-	background-color:#599bb3;
+	background:linear-gradient(to bottom, #0e2949 5%, #5d7fac 100%);
+	background-color:#133766;
 	border-radius:20px;
 	display:inline-block;
 	cursor:pointer;
@@ -68,8 +109,8 @@ border-top: 1px solid black;
 	text-shadow:1px -2px 2px #3d768a;
 }
 .btn:hover {
-	background:linear-gradient(to bottom, #56e2f7 5%, #599bb3 100%);
-	background-color:#56e2f7;
+	background:linear-gradient(to bottom, #264a6b 5%, #6fa0d8 100%);
+	background-color:#5a90ce;
 }
 .btn:active {
 	position:relative;
