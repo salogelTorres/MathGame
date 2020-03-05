@@ -28,6 +28,17 @@ function generateOperacionesCombinadas(element) {
     print += `${element}`;
   });
   print += `</div>`;
+  var button = `<button class="btn showResult btnSuma">Resolver</button>`;
+  //   Creamos el boton para mostrar el resultado
+  print += button;
+
+  //   Lanzamos el evento al boton
+  element.addEventListener("click", function(e) {
+    if (e.srcElement.classList[1] == "showResult") {
+      e.target.nextElementSibling.classList.remove("hide");
+      e.target.classList.add("hide");
+    }
+  });
 
   var indexSteps = 0;
   print += `<div class="resultado">`;
