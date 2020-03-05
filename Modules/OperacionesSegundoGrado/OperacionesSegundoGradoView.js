@@ -12,8 +12,8 @@ function aplicarOperacionesSegundoGrado(element) {
 function generateOperacionesSegundoGrado(element){
   var result = new OperacionesSegundoGradoClass(6,7,3,2);
   var print = ``;
-  print+="`" +result.output.discriminant + "`<br>";
-  print+="`" +result.output.ecuation + "`";
+  print+="`" +result.discriminant + "`<br>";
+  print+="`" +result.ecuation + "`";
   element.innerHTML = print;
 
 }

@@ -6,7 +6,7 @@ class OperacionesSegundoGradoClass {
     this.output = {};
     this.setDiscriminant(this.A, this.B, this.C);
     this.setEcuation();
-    
+    return this.output;
   }
 
   set(param) {
