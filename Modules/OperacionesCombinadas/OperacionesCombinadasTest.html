@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      import { OperacionesCombinadasClass } from "./OperacionesCombinadasClass.js";
+      import { OperacionesCombinadasHelpers } from "./OperacionesCombinadasHelpers.js";
+
+      function test1() {
+        var count = 0;
+        try {
+          while (count < 1000) {
+            var generate = new OperacionesCombinadasHelpers(3,3, 3);
+            var result = new OperacionesCombinadasClass(generate.slice());
+            console.log(result);
+            count++;
+          }
+        } catch (error) {
+          console.log(generate)
+          console.log("OPCIONES CORRECTAS:" + count);
+          console.log(error);
+        }
+      }
+      test1();
+    </script>
+  </body>
+</html>
