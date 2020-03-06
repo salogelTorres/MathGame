@@ -7,11 +7,10 @@ class OperacionesCombinadasClass {
     this.output = "";
     this.exec();
 
-
     if (this.output == this.directResult) {
       return this.result();
     } else {
-      throw "Error en coincidencia de resultado"
+      throw "Error en coincidencia de resultado";
     }
   }
   result() {
@@ -60,8 +59,25 @@ class OperacionesCombinadasClass {
       this.combinedOperation.splice(this.firstOperationPosition - 1, 1);
     }
     var toStep = this.combinedOperation.slice();
+
+    toStep = this.putParenthesisNumberNegative(toStep);
     this.steps.push(toStep);
   }
+  putParenthesisNumberNegative(array) {
+    if (array.length > 1) {
+      var ret = array.map(function(x) {
+        if (Number.isInteger(x) && x < 0) {
+          return "(" + x + ")";
+        } else {
+          return x;
+        }
+      });
+      return ret;
+    } else {
+      return array;
+    }
+  }
+
   generateOutput(resultOperation) {
     this.output = resultOperation;
   }
@@ -206,7 +222,10 @@ class OperacionesCombinadasClass {
     }
   }
   validateCombinedOperation(combinedOperation) {
-    if (OperacionesCombinadasClass.doCombinedOperation(combinedOperation) === false) {
+    if (
+      OperacionesCombinadasClass.doCombinedOperation(combinedOperation) ===
+      false
+    ) {
       return false;
     }
 
