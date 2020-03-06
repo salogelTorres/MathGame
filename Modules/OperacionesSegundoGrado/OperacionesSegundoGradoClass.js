@@ -35,71 +35,71 @@ class OperacionesSegundoGradoClass {
       );
 
       // Generamos los pasos para llegar a la solución
+      // Step1
       this.output.steps.push(
-        "x1=(-" +
+        "x=(-" +
           this.printB +
-          "+sqrt(" +
+          "+-sqrt(" +
           this.printB +
           "^2-4*" +
           this.printA +
           "*" +
           this.printC +
           "))/(2*" +
-          this.printA +
-          "), x2=(-" +
-          this.printB +
-          "-sqrt(" +
-          this.printB +
-          "^2-4*" +
-          this.printA +
-          "*" +
-          this.printC +
-          "))/(2*" +
-          this.printA +
-          ") "
-      );
-      this.output.steps.push(
-        "x1=(-" +
-          this.printB +
-          "+sqrt(" +
-          this.print(this.discriminant) +
-          "))/(2*" +
-          this.printA +
-          "), x2=(-" +
-          this.printB +
-          "-sqrt(" +
-          this.print(this.discriminant) +
-          "))/(2*" +
-          this.printA +
-          ") "
-      );
-      this.output.steps.push(
-        "x1=(-" +
-          this.printB +
-          "+" +
-          this.print(Math.sqrt(this.discriminant)) +
-          ")/(2*" +
-          this.printA +
-          "), x2=(-" +
-          this.printB +
-          "-" +
-          this.print(Math.sqrt(this.discriminant)) +
-          ")/(2*" +
           this.printA +
           ")"
       );
+      // Step2
+      this.output.steps.push(
+        "x=(" +
+          -this.B +
+          "+-sqrt(" +
+          this.print(this.B ** 2) +
+          "-" +
+          this.print(4 * this.A * this.C) +
+          "))/" +
+          this.print(2 * this.A) +
+          ""
+      );
+      // Step3
+      this.output.steps.push(
+        "x=(" +
+          -this.B +
+          "+-sqrt(" +
+          this.print(this.B ** 2 - 4 * this.A * this.C) +
+          "))/" +
+          this.print(2 * this.A) +
+          ""
+      );
+      // Step4
+      this.output.steps.push(
+        "x1=(" +
+          -this.B +
+          "+" +
+          this.print(Math.sqrt(this.discriminant)) +
+          ")/" +
+          this.print(2 * this.A) +
+          ", x2=(" +
+          -this.B +
+          "-" +
+          this.print(Math.sqrt(this.discriminant)) +
+          ")/" +
+          this.print(2 * this.A) +
+          ""
+      );
+      // Step5
       this.output.steps.push(
         "x1=(" +
           this.print(-this.B + Math.sqrt(this.discriminant)) +
-          ")/(2*" +
-          this.printA +
+          ")/(" +
+          this.print(2 * this.A) +
           "), x2=(" +
           this.print(-this.B - Math.sqrt(this.discriminant)) +
-          ")/(2*" +
-          this.printA +
-          ")"
+          ")/" +
+          this.print(2 * this.A) +
+          ""
       );
-
+      // Step6
       this.output.steps.push(
         "x1=" +
           this.print(-this.B + Math.sqrt(this.discriminant)) +
@@ -110,6 +110,7 @@ class OperacionesSegundoGradoClass {
           "/" +
           this.print(2 * this.A)
       );
+      // Step7
       this.output.steps.push(
         "x1=" +
           this.print((-this.B + Math.sqrt(this.discriminant)) / (2 * this.A)) +
@@ -273,7 +274,6 @@ class OperacionesSegundoGradoClass {
       );
     } else if (this.output.typeOfSolution == -1) {
       this.solutions.push("No tiene soluciones reales");
-      
     }
   }
 
