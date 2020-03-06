@@ -1,4 +1,5 @@
 import { OperacionesSegundoGradoClass } from "./OperacionesSegundoGradoClass.js";
+import { OperacionesSegundoGradoHelpers } from "./OperacionesSegundoGradoHelpers.js";
 
 function aplicarOperacionesSegundoGrado(element) {
   if (element.length === undefined) {
@@ -14,6 +15,9 @@ function generateOperacionesSegundoGrado(element) {
   var b = Math.round(Math.random() * 200) - 100;
   var c = Math.round(Math.random() * 200) - 100;
   var result = new OperacionesSegundoGradoClass(a, b, c);
+  // a = result.print(a);
+  // b = result.print(b);
+  // c = result.print(c);
   var print = `<div class="operacionesSegundoGrado">`;
   print += `<div class="enunciado">`;
   print += `Resuelve la siguiente ecuación `;
