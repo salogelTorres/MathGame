@@ -18,5 +18,6 @@ class OperacionesSegundoGradoHelpers {
 
 }
 
+export {OperacionesSegundoGradoHelpers}
 
 
