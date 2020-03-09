@@ -10,14 +10,22 @@ function aplicarOperacionesSegundoGrado(element) {
     });
   }
 }
+//Porcentajes en los que se generarán las soluciones de la ecuación de 2 grado
+//generarCoeficientes(2SolEnteras, 2SolReales, 1SolDoble, NoSol)
+var terna = OperacionesSegundoGradoHelpers.generarCoeficientes(0.2, 0.2, 0.2, 0.2); 
+var a = terna[0];
+var b = terna[1];
+var c = terna[2];
+// console.log(terna);
+
 function generateOperacionesSegundoGrado(element) {
-  var a = Math.round(Math.random() * 200) - 100;
-  var b = Math.round(Math.random() * 200) - 100;
-  var c = Math.round(Math.random() * 200) - 100;
+  // var a = Math.round(Math.random() * 200) - 100;
+  // var b = Math.round(Math.random() * 200) - 100;
+  // var c = Math.round(Math.random() * 200) - 100;
   var result = new OperacionesSegundoGradoClass(a, b, c);
-  // a = result.print(a);
-  // b = result.print(b);
-  // c = result.print(c);
+  a = OperacionesSegundoGradoHelpers.print(a);
+  b = OperacionesSegundoGradoHelpers.print(b);
+  c = OperacionesSegundoGradoHelpers.print(c);
   var print = `<div class="operacionesSegundoGrado">`;
   print += `<div class="enunciado">`;
   print += `Resuelve la siguiente ecuación `;
